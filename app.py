@@ -16,6 +16,9 @@ def index():
     if request.method == 'POST':
         try:
             city = request.form['city'].title()
+            if not city :
+                flash('Please enter a city')
+                return redirect(url_for('index'))
 
             url = f'https://api.weatherbit.io/v2.0/forecast/daily?city={city}&key=e0ff2a6970ff41f09562937a434f1cd2'
             url2 = f'https://api.weatherbit.io/v2.0/forecast/daily?city={city}&units=i&key=e0ff2a6970ff41f09562937a434f1cd2'
