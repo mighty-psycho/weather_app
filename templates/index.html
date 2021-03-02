@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+		
+		<title>Simple Weather App</title>
+
+		<!-- Loading third party fonts -->
+		<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+		<link href="../static/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+		<!-- Loading main css file -->
+		<link rel="stylesheet" href="../static/css/style.css">
+		
+		<!--[if lt IE 9]>
+		<script src="../static/js/ie-support/html5.js"></script>
+		<script src="../static/js/ie-support/respond.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="site-content">
+			<div class="site-header">
+				<div class="container">
+						<img src="../static/images/logo.png" alt="" class="logo">
+						<div class="logo-type">
+							<h1 class="site-title">Simple Weather App</h1>
+							<small class="site-description">{{ quotes }}</small>
+						</div>
+                </div>
+			</div> <!-- .site-header -->
+			<div class="hero" data-bg-image="static/images/6N.jpg">
+				<div class="container">
+                    {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <h2>{{ message }}</h2>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+					<form method="POST" action="{{ url_for('index') }}" class="find-location">
+						<input id="autocomplete" name="city" type="text" placeholder="Find your location..." required>
+						<input type="submit" value="Find">
+					</form>
+
+                </div>
+				</div>
+			</div>
+        {% if data %}
+			<div class="forecast-table">
+				<div class="container">
+					<div class="forecast-container">
+						<div class="today forecast">
+							<div class="forecast-header">
+								<div class="day">Today</div>
+								<div class="date">{{ data.date[0] }}</div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<h2><div class="location">{{ data.city }}</div></h2>
+								<div class="degree">
+									<div class="num">{{ data.temperature }}<sup>o</sup>C</div>/
+                                    <small>{{ data.temperatureF }}<sup>o</sup>F</small>
+									<div class="forecast-icon">
+										<img src="../static/icons/{{ data.icon[0] }}.png" alt="Image" width=90>
+									</div><br>
+                                    <span>Max {{ data.max_temp[0] }}<sup>o</sup>C</span>/
+                                    <small>{{ data.max_tempF[0] }}<sup>o</sup>F</small>
+								</div>
+								<span>{{ data.description }}</span>
+								<span><img src="../static/images/icon-wind.png" alt="">{{ data.wind }}km/h / {{ data.windF }}mph</span>
+								<span><img src="../static/images/icon-compass.png" alt="">Wind  {{ data.wind_direction }}</span>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day">{{ data.date[1] }}</div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<img src="../static/icons/{{ data.icon[1] }}.png" alt="" width=48>
+								</div>
+								<div class="degree">{{ data.max_temp[1] }}<sup>o</sup>C<h6>{{ data.max_tempF[1] }}<sup>o</sup>F</h6></div>
+								<small>{{ data.min_temp[1] }}<sup>o</sup>C<h6>{{ data.min_tempF[1] }}<sup>o</sup>F</h6></small>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day">{{ data.date[2] }}</div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<img src="../static/icons/{{ data.icon[2] }}.png" alt="" width=48>
+								</div>
+								<div class="degree">{{ data.max_temp[2] }}<sup>o</sup>C<h6>{{ data.max_tempF[2] }}<sup>o</sup>F</h6></div>
+								<small>{{ data.min_temp[2] }}<sup>o</sup>C<h6>{{ data.min_tempF[2] }}<sup>o</sup>F</h6></small>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day">{{ data.date[3] }}</div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<img src="../static/icons/{{ data.icon[3] }}.png" alt="" width=48>
+								</div>
+								<div class="degree">{{ data.max_temp[3] }}<sup>o</sup>C<h6>{{ data.max_tempF[3] }}<sup>o</sup>F</h6></div>
+								<small>{{ data.min_temp[3] }}<sup>o</sup>C<h6>{{ data.min_tempF[3] }}<sup>o</sup>F</h6></small>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day">{{ data.date[4] }}</div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<img src="../static/icons/{{ data.icon[4] }}.png" alt="" width=48>
+								</div>
+								<div class="degree">{{ data.max_temp[4] }}<sup>o</sup>C<h6>{{ data.max_tempF[4] }}<sup>o</sup>F</h6></div>
+								<small>{{ data.min_temp[4] }}<sup>o</sup>C<h6>{{ data.min_tempF[4] }}<sup>o</sup>F</h6></small>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day">{{ data.date[5] }}</div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<img src="../static/icons/{{ data.icon[5] }}.png" alt="" width=48>
+								</div>
+								<div class="degree">{{ data.max_temp[5] }}<sup>o</sup>C<h6>{{ data.max_tempF[5] }}<sup>o</sup>F</h6></div>
+								<small>{{ data.min_temp[5] }}<sup>o</sup>C<h6>{{ data.min_tempF[5] }}<sup>o</sup>F</h6></small>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day">{{ data.date[6] }}</div>
+							</div> <!-- .forecast-header -->
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<img src="../static/icons/{{ data.icon[6] }}.png" alt="" width=48>
+								</div>
+								<div class="degree">{{ data.max_temp[6] }}<sup>o</sup>C<h6>{{ data.max_tempF[6] }}<sup>o</sup>F</h6></div>
+								<small>{{ data.min_temp[6] }}<sup>o</sup>C<h6>{{ data.min_tempF[6] }}<sup>o</sup>F</h6></small>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        {% endif %}
+			<footer class="site-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8">
+							<form method="POST" action="{{ url_for('contact') }}" class="subscribe-form">
+								<input name="email" type="text" placeholder="Contact me via email...">
+								<input type="submit" value="Submit">
+							</form>
+						</div>
+						<div class="col-md-3 col-md-offset-1">
+							<div class="social-links">
+								<a href="https://github.com/mighty-psycho"><i class="fa fa-github"></i></a>
+								<a href="https://www.linkedin.com/in/radomir-mijovic-401a98114/"><i class="fa fa-linkedin"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer> <!-- .site-footer -->
+		</div>
+		
+		<script src="../static/js/jquery-1.11.1.min.js"></script>
+		<script src="../static/js/plugins.js"></script>
+		<script src="../static/js/app.js"></script>
+		
+	</body>
+
+</html>
