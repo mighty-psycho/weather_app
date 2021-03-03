@@ -21,6 +21,7 @@
 		<![endif]-->
 	</head>
 	<body>
+
 		<div class="site-content">
 			<div class="site-header">
 				<div class="container">
@@ -39,16 +40,14 @@
                         <h2>{{ message }}</h2>
                     {% endfor %}
                 {% endif %}
-            {% endwith %}
-
+                {% endwith %}
 					<form method="POST" action="{{ url_for('index') }}" class="find-location">
 						<input id="autocomplete" name="city" type="text" placeholder="Find your location...">
 						<input type="submit" value="Find">
 					</form>
-
                 </div>
-				</div>
-			</div>
+            </div>
+
         {% if data %}
 			<div class="forecast-table">
 				<div class="container">
@@ -67,11 +66,11 @@
 										<img src="../static/icons/{{ data.icon[0] }}.png" alt="Image" width=90>
 									</div><br>
                                     <span>Max {{ data.max_temp[0] }}<sup>o</sup>C</span>/
-                                    <small>{{ data.max_tempF[0] }}<sup>o</sup>F</small>
+                                    <span>{{ data.max_tempF[0] }}<sup>o</sup>F</span>
 								</div>
 								<span>{{ data.description }}</span>
 								<span><img src="../static/images/icon-wind.png" alt="">{{ data.wind }}km/h / {{ data.windF }}mph</span>
-								<span><img src="../static/images/icon-compass.png" alt="">Wind  {{ data.wind_direction }}</span>
+								<span><img src="../static/images/icon-compass.png" alt="">{{ data.wind_direction }}</span>
 							</div>
 						</div>
 						<div class="forecast">
@@ -80,9 +79,9 @@
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<img src="../static/icons/{{ data.icon[1] }}.png" alt="" width=48>
+									<img src="../static/icons/{{ data.icon[1] }}.png" alt="" width=35>
 								</div>
-								<div class="degree">{{ data.max_temp[1] }}<sup>o</sup>C<h6>{{ data.max_tempF[1] }}<sup>o</sup>F</h6></div>
+								<div class="degree"><h6>{{ data.max_temp[1] }}<sup>o</sup>C {{ data.max_tempF[1] }}<sup>o</sup>F</h6></div>
 								<small>{{ data.min_temp[1] }}<sup>o</sup>C<h6>{{ data.min_tempF[1] }}<sup>o</sup>F</h6></small>
 							</div>
 						</div>
@@ -92,9 +91,9 @@
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<img src="../static/icons/{{ data.icon[2] }}.png" alt="" width=48>
+									<img src="../static/icons/{{ data.icon[2] }}.png" alt="" width=35>
 								</div>
-								<div class="degree">{{ data.max_temp[2] }}<sup>o</sup>C<h6>{{ data.max_tempF[2] }}<sup>o</sup>F</h6></div>
+								<div class="degree"><h6>{{ data.max_temp[2] }}<sup>o</sup>C {{ data.max_tempF[2] }}<sup>o</sup>F</h6></div>
 								<small>{{ data.min_temp[2] }}<sup>o</sup>C<h6>{{ data.min_tempF[2] }}<sup>o</sup>F</h6></small>
 							</div>
 						</div>
@@ -104,9 +103,9 @@
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<img src="../static/icons/{{ data.icon[3] }}.png" alt="" width=48>
+									<img src="../static/icons/{{ data.icon[3] }}.png" alt="" width=35>
 								</div>
-								<div class="degree">{{ data.max_temp[3] }}<sup>o</sup>C<h6>{{ data.max_tempF[3] }}<sup>o</sup>F</h6></div>
+								<div class="degree"><h6>{{ data.max_temp[3] }}<sup>o</sup>C {{ data.max_tempF[3] }}<sup>o</sup>F</h6></div>
 								<small>{{ data.min_temp[3] }}<sup>o</sup>C<h6>{{ data.min_tempF[3] }}<sup>o</sup>F</h6></small>
 							</div>
 						</div>
@@ -116,9 +115,9 @@
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<img src="../static/icons/{{ data.icon[4] }}.png" alt="" width=48>
+									<img src="../static/icons/{{ data.icon[4] }}.png" alt="" width=35>
 								</div>
-								<div class="degree">{{ data.max_temp[4] }}<sup>o</sup>C<h6>{{ data.max_tempF[4] }}<sup>o</sup>F</h6></div>
+								<div class="degree"><h6>{{ data.max_temp[4] }}<sup>o</sup>C {{ data.max_tempF[4] }}<sup>o</sup>F</h6></div>
 								<small>{{ data.min_temp[4] }}<sup>o</sup>C<h6>{{ data.min_tempF[4] }}<sup>o</sup>F</h6></small>
 							</div>
 						</div>
@@ -128,9 +127,9 @@
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<img src="../static/icons/{{ data.icon[5] }}.png" alt="" width=48>
+									<img src="../static/icons/{{ data.icon[5] }}.png" alt="" width=35>
 								</div>
-								<div class="degree">{{ data.max_temp[5] }}<sup>o</sup>C<h6>{{ data.max_tempF[5] }}<sup>o</sup>F</h6></div>
+								<div class="degree"><h6>{{ data.max_temp[5] }}<sup>o</sup>C {{ data.max_tempF[5] }}<sup>o</sup>F</h6></div>
 								<small>{{ data.min_temp[5] }}<sup>o</sup>C<h6>{{ data.min_tempF[5] }}<sup>o</sup>F</h6></small>
 							</div>
 						</div>
@@ -140,9 +139,9 @@
 							</div> <!-- .forecast-header -->
 							<div class="forecast-content">
 								<div class="forecast-icon">
-									<img src="../static/icons/{{ data.icon[6] }}.png" alt="" width=48>
+									<img src="../static/icons/{{ data.icon[6] }}.png" alt="" width=35>
 								</div>
-								<div class="degree">{{ data.max_temp[6] }}<sup>o</sup>C<h6>{{ data.max_tempF[6] }}<sup>o</sup>F</h6></div>
+								<div class="degree"><h6>{{ data.max_temp[6] }}<sup>o</sup>C {{ data.max_tempF[6] }}<sup>o</sup>F</h6></div>
 								<small>{{ data.min_temp[6] }}<sup>o</sup>C<h6>{{ data.min_tempF[6] }}<sup>o</sup>F</h6></small>
 							</div>
 						</div>
@@ -167,10 +166,9 @@
 						</div>
 					</div>
 				</div>
-                    <h6>Powered by Flask</h6>
+                <h6>Powered by Flask</h6>
 			</footer> <!-- .site-footer -->
-		</div>
-		
+        </div>
 		<script src="../static/js/jquery-1.11.1.min.js"></script>
 		<script src="../static/js/plugins.js"></script>
 		<script src="../static/js/app.js"></script>
