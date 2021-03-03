@@ -20,6 +20,7 @@ def index():
                 flash('Please enter a city')
                 return redirect(url_for('index'))
 
+            #Getting both units C and F
             url = f'https://api.weatherbit.io/v2.0/forecast/daily?city={city}&key={api_key}'
             url2 = f'https://api.weatherbit.io/v2.0/forecast/daily?city={city}&units=i&key={api_key}'
 
