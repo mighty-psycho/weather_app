@@ -20,8 +20,8 @@ def index():
                 flash('Please enter a city')
                 return redirect(url_for('index'))
 
-            url = f'https://api.weatherbit.io/v2.0/forecast/daily?city={city}&key=e0ff2a6970ff41f09562937a434f1cd2'
-            url2 = f'https://api.weatherbit.io/v2.0/forecast/daily?city={city}&units=i&key=e0ff2a6970ff41f09562937a434f1cd2'
+            url = f'https://api.weatherbit.io/v2.0/forecast/daily?city={city}&key={api_key}'
+            url2 = f'https://api.weatherbit.io/v2.0/forecast/daily?city={city}&units=i&key={api_key}'
 
             response = requests.get(url).json()
             response_F = requests.get(url2).json()
@@ -52,7 +52,7 @@ def index():
 def contact():
     if request.method == 'POST':
         email = request.form['email']
-        msg = Message('Contact from Web App',recipients=['batomijovic@hotmail.com'])
+        msg = Message('Contact from Web App',recipients=['mail@mail.com'])
         msg.body = f'You have contact from {email}'
         mail.send(msg)
         flash('Thank You for contacting me, i will reply to You soon')
